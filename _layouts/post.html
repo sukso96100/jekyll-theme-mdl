@@ -1,0 +1,59 @@
+---
+layout: default
+---
+
+
+<!-- Always shows a header, even in smaller screens. -->
+   <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+     <header class="mdl-layout__header">
+       <div class="mdl-layout__header-row">
+         <!-- Title -->
+         <span class="mdl-layout-title">{{ site.title }}</span>
+         <!-- Add spacer, to align navigation to the right -->
+         <div class="mdl-layout-spacer"></div>
+         <button class="mdl-button mdl-js-button mdl-button--icon">
+     <a href="#top" style="color: inherit;"><i class="material-icons">vertical_align_top</i></a>
+   </button>
+       </div>
+     </header>
+     <div class="mdl-layout__drawer">
+       <span class="mdl-layout-title">{{ site.title }}</span>
+       <nav class="mdl-navigation">
+        {% include drawer.html %}
+       </nav>
+     </div>
+     <main class="mdl-layout__content">
+       <div class="page-content"><!-- Your content goes here -->
+ <section id="top"></section>
+      <div class="postlayout-ribbon"
+       {% if page.image %}style="background: url('{{ page.image }}') center / cover;"{% endif %}></div>
+
+     <main class="postlayout-main mdl-layout__content" style="width: 100%;">
+       <div class="postlayout-container mdl-grid">
+         <div class="mdl-cell mdl-cell--2-col mdl-cell--hide-tablet mdl-cell--hide-phone"></div>
+         <div class="postlayout-content mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800 mdl-cell mdl-cell--8-col">
+
+           <table><tr><td><i class="material-icons">today</i></td><td>{{ page.date | date: "%Y.%m.%d" }}</td></tr></table>
+            <h2 id="TITLE">{{ page.title }}</h2>
+            <hr><br>
+            {{ content }}
+            <br>
+            {% for tag in page.tags %}
+           <a class="card-content" href="{{ site.baseurl }}/tags/#{{ tag }}">
+               <button class="mdl-button mdl-js-button mdl-js-ripple-effect">{{ tag }}</button> </a>
+           {% endfor %}
+           <br>
+           {% include disqus.html %}
+
+         </div>
+       </div>
+     </main>
+   </div>
+
+
+
+<script src="{{ "/bower_components/jquery/dist/jquery.js" | prepend: site.baseurl }}"></script>
+<script src="{{ "/js/post.js" | prepend: site.baseurl }}"></script>
+<script src="{{ "/js/common.js" | prepend: site.baseurl }}"></script>
+<script src="{{ "/js/material.min.js" | prepend: site.baseurl }}"></script>
+{% include javascripts.html %}

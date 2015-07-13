@@ -1,0 +1,18 @@
+# Build settings
+markdown: kramdown
+
+# Site settings
+title: "JekyllMDL"
+description: "MDL Based Jekyll Theme"
+email: sukso96100@gmail.com
+
+name: 'Youngbin Han'
+author: 'Youngbin Han'
+
+paginate:	5
+
+url: "http://sukso96100.github.io" # the base hostname & protocol for your site
+baseurl: ""
+
+#Your Disqus Shortname
+disqus_shortname: disqus
