@@ -8,7 +8,7 @@ layout: default
      <header class="mdl-layout__header">
        <div class="mdl-layout__header-row">
          <!-- Title -->
-         <span class="mdl-layout-title">{{ site.title }}</span>
+         <span class="mdl-layout-title">{{ page.title }}</span>
          <!-- Add spacer, to align navigation to the right -->
          <div class="mdl-layout-spacer"></div>
          <button class="mdl-button mdl-js-button mdl-button--icon">
@@ -17,9 +17,11 @@ layout: default
        </div>
      </header>
      <div class="mdl-layout__drawer">
-       <span class="mdl-layout-title">{{ site.title }}</span>
+       <span class="mdl-layout-title">{{ page.title }}</span>
        <nav class="mdl-navigation">
-         {% include drawer.html %}
+         <a class="mdl-navigation__link" href="/">Home</a>
+         <a class="mdl-navigation__link" href="/blog/">Blog</a>
+         <a class="mdl-navigation__link" href="/portfolio/">Portfolio</a>
        </nav>
      </div>
      <main class="mdl-layout__content">
@@ -48,6 +50,8 @@ layout: default
 <script src="{{ "/js/common.js" | prepend: site.baseurl }}"></script>
 <script src="{{ "/js/material.min.js" | prepend: site.baseurl }}"></script>
 {% include javascripts.html %}
+
+
 
 
 <script src="{{ "/js/common.js" | prepend: site.baseurl }}"></script>

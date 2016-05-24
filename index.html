@@ -1,48 +1,50 @@
 ---
 layout: default
-title: Home
+title: Recent Posts
 ---
 
-<!-- Always shows a header, even in smaller screens. -->
-<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
-  <header class="mdl-layout__header">
-    <div class="mdl-layout__header-row">
-      <!-- Title -->
-      <span class="mdl-layout-title">{{ site.title }}</span>
-      <!-- Add spacer, to align navigation to the right -->
-      <div class="mdl-layout-spacer"></div>
-       <a href="#top" style="color: inherit;"><i class="material-icons">vertical_align_top</i></a>
-    </div>
-  </header>
-  <div class="mdl-layout__drawer">
-    <span class="mdl-layout-title">{{ site.title }}</span>
-    <nav class="mdl-navigation">
-      {% include drawer.html %}
-    </nav>
-  </div>
-  <main class="mdl-layout__content">
-    <div class="page-content" style="padding:32px;" align="center">
-      <section id="top"></section>
-    {% for post in site.posts limit:15 %}
-    <div class="mdl-card mdl-shadow--2dp demo-card-image mdl-cell mdl-cell--12-col mdl-shadow--4dp"
-     style="{% if post.image %}background: linear-gradient( rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4) ), url('{{ post.image }}');{% endif %}
-     background-color: #5F7D8B; max-width:1300px;">
-      <div class="mdl-card__title mdl-card--expand"></div>
-      <div class="mdl-card__actions">
-        <span class="demo-card-image__filename" style="color:white;">
-        <h3 style="padding: 16px;"><a href="{{ post.url | prepend: site.baseurl }}" style="color:white;">{{ post.title }}</a></h3>
-        <p>{{ post.content | strip_html | truncatewords:50 }}</p>
-        <table><tr><td><i class="material-icons">today</i></td><td>{{ post.date | date: "%Y.%m.%d" }}</td></tr></table>
-        </span>
-      </div>
-    </div>
-         <br>
+    {% for post in paginator.posts %}
+    <div class="mdl-card mdl-cell mdl-cell--12-col postcard" align="start">
+               <div class="mdl-card__media mdl-color-text--grey-50"
+               style="{% if post.image %}background: linear-gradient( rgba(0, 0, 0, 0.4),
+               rgba(0, 0, 0, 0.4) ), url('{{ post.image }}')center / cover;{% endif %}
+               padding:16px;">
+                 <a href="{{ site.baseurl }}/{{ post.url }}"><h3 style="color:white;">{{ post.title }}</h3></a>
+               </div>
+               <div class="mdl-color-text--grey-600 mdl-card__supporting-text">
+                 {{ post.content | strip_html | truncatewords:60 }}
+                  </div>
+               <div class="mdl-card__supporting-text meta mdl-color-text--grey-600">
+                 <div class="minilogo"></div>
+                 <div>
+                   <hr>
+                   <table><tr><td><i class="material-icons">today</i></td><td>{{ post.date | date: "%Y.%m.%d" }}</td></tr></table>
+                 </div>
+               </div>
+             </div>
+
+
 {% endfor %}
-<a href="/archive/"><button class="mdl-button mdl-js-button mdl-js-ripple-effect">More Posts</button></a>
-</div>
-  </main>
-</div>
 
+<h4 style="color:white;">Page {{ paginator.page }} of {{ paginator.total_pages }}</h4>
 
-<script src="{{ "/js/material.min.js" | prepend: site.baseurl }}"></script>
-<script src="{{ "/js/common.js" | prepend: site.baseurl }}"></script>
+<table align="center" style="padding-bottom:160px;">
+  <tr>
+    <td style="padding-right:16px;">
+      <a href="{% if paginator.next_page %}{{ site.baseurl }}/{{ paginator.next_page_path }}{% else %}{% endif %}" class="demo-nav__button">
+        <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+          <i class="material-icons">arrow_back</i>
+          </button>
+            <b style="color:white;">Older</b>
+        </a>
+      </td>
+      <td style="padding-left:16px;">
+        <a href="{% if paginator.previous_page %}{{ site.baseurl }}/{{ paginator.previous_page_path }}{% else %}{% endif %}" class="demo-nav__button">
+         <b style="color:white;">Newer</b>
+        <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+          <i class="material-icons">arrow_forward</i>
+        </button>
+       </a>
+     </td>
+   </tr>
+ </table>

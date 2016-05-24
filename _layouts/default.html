@@ -3,18 +3,41 @@
 <head>
     {% include head.html %}
     </head>
-    <body class="fullbleed layout vertical">
+    <body>
+
+    <div class="demo-layout-transparent mdl-layout mdl-js-layout mdl-layout--fixed-header">
+  <header class="mdl-layout__header mdl-layout__header--transparent">
+    <div class="mdl-layout__header-row">
+      <!-- Title -->
+      <span class="mdl-layout-title">{{ site.title }}</span>
+      <!-- Add spacer, to align navigation to the right -->
+      <div class="mdl-layout-spacer"></div>
+      <!-- Navigation -->
+      <nav class="mdl-navigation">
+
+      </nav>
+    </div>
+  </header>
+  <div class="mdl-layout__drawer">
+    <span class="mdl-layout-title">MENU</span>
+    <nav class="mdl-navigation">
+      <a class="mdl-navigation__link" href="{{ site.baseurl }}">Home</a>
+      <a class="mdl-navigation__link" href="{{ site.baseurl }}/tags">Tags</a>
+      <a class="mdl-navigation__link" href="{{ site.baseurl }}/archive">Archive</a>
+      <a class="mdl-navigation__link" href="{{ site.baseurl }}/feed.xml">Subscribe</a>
+    </nav>
+  </div>
+  <main class="mdl-layout__content">
+    <div align="center" style="margin-top: 80px;">
     {{ content }}
-        <script>
-var $buoop = {c:2};
-function $buo_f(){
- var e = document.createElement("script");
- e.src = "//browser-update.org/update.js";
- document.body.appendChild(e);
-};
-try {document.addEventListener("DOMContentLoaded", $buo_f,false)}
-catch(e){window.attachEvent("onload", $buo_f)}
-</script>
+  </div>
+  </main>
+
+</div>
+
+<script src="{{ "/js/material.min.js" | prepend: site.baseurl }}"></script>
+<script src="{{ "/js/common.js" | prepend: site.baseurl }}"></script>
+{% include javascripts.html %}
 
     </body>
 </html>

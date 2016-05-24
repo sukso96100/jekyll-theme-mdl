@@ -19,8 +19,10 @@
 
 </script>
 
-  <link rel="stylesheet" href="{{ "/css/main.css" | prepend: site.baseurl }}">
-<link rel="stylesheet" href="{{ "/css/common.css" | prepend: site.baseurl }}">
+<link rel="stylesheet" href="{{ "/css/material.min.css" | prepend: site.baseurl }}">
+<link rel="stylesheet" href="{{ "/css/font-awesome.min.css" | prepend: site.baseurl }}">
+  <link rel="stylesheet" href="{{ "/css/custom.css" | prepend: site.baseurl }}">
+  <link rel="stylesheet" href="{{ "/css/code.css" | prepend: site.baseurl }}">
   <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
   <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ "/feed.xml" | prepend: site.baseurl | prepend: site.url }}" />
 
@@ -35,5 +37,6 @@ function $buo_f(){
 try {document.addEventListener("DOMContentLoaded", $buo_f,false)}
 catch(e){window.attachEvent("onload", $buo_f)}
 </script>
-<link rel="stylesheet" href="/css/material.min.css">
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">

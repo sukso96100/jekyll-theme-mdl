@@ -3,26 +3,8 @@ layout: default
 title: Archive
 permalink: /archive/
 ---
-<!-- Always shows a header, even in smaller screens. -->
-<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
-  <header class="mdl-layout__header">
-    <div class="mdl-layout__header-row">
-      <!-- Title -->
-      <span class="mdl-layout-title">{{ site.title }}</span>
-      <!-- Add spacer, to align navigation to the right -->
-      <div class="mdl-layout-spacer"></div>
-       <a href="#top" style="color: inherit;"><i class="material-icons">vertical_align_top</i></a>
-    </div>
-  </header>
-  <div class="mdl-layout__drawer">
-    <span class="mdl-layout-title">{{ site.title }}</span>
-    <nav class="mdl-navigation">
-      {% include drawer.html %}
-    </nav>
-  </div>
-  <main class="mdl-layout__content">
-    <div class="page-content" style="padding:32px;" align="center">
-      <section id="top"></section>
+<div class="mdl-card mdl-cell mdl-cell--12-col postcard" align="start">
+<section class="content">
       {% for post in site.posts  %}
 
     {% capture this_year %}{{ post.date | date: "%Y" }}{% endcapture %}
@@ -34,21 +16,10 @@ permalink: /archive/
     <!-- <ul> -->
     {% endif %}
 
-        <div class="mdl-card mdl-shadow--2dp demo-card-image mdl-cell mdl-cell--12-col mdl-shadow--4dp"
-         style="{% if post.image %}background: linear-gradient( rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4) ), url('{{ post.image }}');{% endif %}
-         background-color: #5F7D8B; max-width:1300px;">
-          <div class="mdl-card__title mdl-card--expand"></div>
-          <div class="mdl-card__actions">
-            <span class="demo-card-image__filename" style="color:white;">
-            <h4 style="padding: 16px;"><a href="{{ post.url | prepend: site.baseurl }}" style="color:white;">{{ post.title }}</a></h4>
-            <table><tr><td><i class="material-icons">today</i></td><td>{{ post.date | date: "%Y.%m.%d" }}</td></tr></table>
-            </span>
-          </div>
-        </div>
+         <p>{{ post.date | date: "%Y.%m.%d" }} | <a href="{{ site.baseurl }}/{{ post.url }}">{{ post.title }}</a>{% if post.author %} | {{ post.author }} {% endif %}</p>
 
 
     {% if forloop.last %}
-
     {% else %}
         {% if this_year != next_year %}
 
@@ -57,10 +28,5 @@ permalink: /archive/
     {% endif %}
 
 {% endfor %}
+ </section>
 </div>
-  </main>
-</div>
-
-
-<script src="{{ "/js/material.min.js" | prepend: site.baseurl }}"></script>
-<script src="{{ "/js/common.js" | prepend: site.baseurl }}"></script>

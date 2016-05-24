@@ -1,9 +1,8 @@
 ---
 layout: post
-title: "Lorem ipsum dolor sit amet."
-date: 2015-07-10
-tags: Lorem ipsum dolor sit amet
-image : /resources/activity_and_fragment.png
+title: "Lorem ipsum"
+date: 2016-04-23
+tags: Lorem ipsum
 ---
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec malesuada eu ex vel convallis. Vestibulum elementum metus ultrices arcu placerat, et tristique tortor posuere. Aenean vel arcu a magna hendrerit venenatis. Vestibulum et ligula at turpis suscipit accumsan. Vestibulum suscipit, nulla vel bibendum eleifend, tortor mauris dictum est, sit amet sagittis nisi magna porttitor mauris. Vivamus elit massa, tincidunt vel sem in, eleifend euismod purus. Ut suscipit egestas ornare. Vestibulum quis justo mauris. Donec pulvinar libero ante.

@@ -2,58 +2,51 @@
 layout: default
 ---
 
-
-<!-- Always shows a header, even in smaller screens. -->
-   <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
-     <header class="mdl-layout__header">
-       <div class="mdl-layout__header-row">
-         <!-- Title -->
-         <span class="mdl-layout-title">{{ site.title }}</span>
-         <!-- Add spacer, to align navigation to the right -->
-         <div class="mdl-layout-spacer"></div>
-         <button class="mdl-button mdl-js-button mdl-button--icon">
-     <a href="#top" style="color: inherit;"><i class="material-icons">vertical_align_top</i></a>
-   </button>
-       </div>
-     </header>
-     <div class="mdl-layout__drawer">
-       <span class="mdl-layout-title">{{ site.title }}</span>
-       <nav class="mdl-navigation">
-        {% include drawer.html %}
-       </nav>
-     </div>
-     <main class="mdl-layout__content">
-       <div class="page-content"><!-- Your content goes here -->
- <section id="top"></section>
-      <div class="postlayout-ribbon"
-       {% if page.image %}style="background: url('{{ page.image }}') center / cover;"{% endif %}></div>
-
-     <main class="postlayout-main mdl-layout__content" style="width: 100%;">
-       <div class="postlayout-container mdl-grid">
-         <div class="mdl-cell mdl-cell--2-col mdl-cell--hide-tablet mdl-cell--hide-phone"></div>
-         <div class="postlayout-content mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800 mdl-cell mdl-cell--8-col">
-
+<div class="mdl-card mdl-cell mdl-cell--12-col postcard" align="start">
+           <div class="mdl-card__media mdl-color-text--grey-50"
+           style="{% if page.image %}background: linear-gradient( rgba(0, 0, 0, 0.4),
+           rgba(0, 0, 0, 0.4) ), url('{{ page.image }}')center / cover;{% endif %}
+           padding:16px;">
+             <h3 style="color:white; padding-top:104px;">{{ page.title }}</h3>
+           </div>
+           <section class="content">
            <table><tr><td><i class="material-icons">today</i></td><td>{{ page.date | date: "%Y.%m.%d" }}</td></tr></table>
-            <h2 id="TITLE">{{ page.title }}</h2>
-            <hr><br>
-            {{ content }}
-            <br>
-            {% for tag in page.tags %}
-           <a class="card-content" href="{{ site.baseurl }}/tags/#{{ tag }}">
-               <button class="mdl-button mdl-js-button mdl-js-ripple-effect">{{ tag }}</button> </a>
-           {% endfor %}
-           <br>
-           {% include disqus.html %}
-
+           <hr>
+          {{ content }}
+          <hr>
+          <!-- 구글플러스 +1 버튼 -->
+           <g:plusone></g:plusone><br>
+          <!-- Facebook 좋아요 버튼 -->
+          <div class="fb-like" data-href="{{ site.baseurl }}/{{ page.url }}" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div><br>
+          <hr>
+          {% for tag in page.tags %}
+         <a class="card-content" href="{{ site.baseurl }}/tags/#{{ tag }}">
+             <button class="mdl-button mdl-js-button mdl-js-ripple-effect">#{{ tag }}</button> </a>
+         {% endfor %}
+</section>
          </div>
-       </div>
-     </main>
-   </div>
 
 
-
-<script src="{{ "/bower_components/jquery/dist/jquery.js" | prepend: site.baseurl }}"></script>
-<script src="{{ "/js/post.js" | prepend: site.baseurl }}"></script>
-<script src="{{ "/js/common.js" | prepend: site.baseurl }}"></script>
-<script src="{{ "/js/material.min.js" | prepend: site.baseurl }}"></script>
-{% include javascripts.html %}
+                  <div class="mdl-card mdl-cell mdl-cell--12-col postcard content" align="start">
+                 {% include disqus.html %}
+                           </div>
+                           <table align="center" style="padding-bottom:160px;">
+                             <tr>
+                               <td style="padding-right:16px;">
+                                 <a href="{% if page.previous.url %}{{ site.baseurl }}/{{page.previous.url}}{% else %}{% endif %}" class="demo-nav__button">
+                                   <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                                     <i class="material-icons">arrow_back</i>
+                                     </button>
+                                       <b style="color:white;">Older</b>
+                                   </a>
+                                 </td>
+                                 <td style="padding-left:16px;">
+                                   <a href="{% if page.next.url %}{{ site.baseurl }}/{{page.next.url}}{% else %}{% endif %}" class="demo-nav__button">
+                                    <b style="color:white;">Newer</b>
+                                   <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                                     <i class="material-icons">arrow_forward</i>
+                                   </button>
+                                  </a>
+                                </td>
+                              </tr>
+                            </table>

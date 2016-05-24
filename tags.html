@@ -3,64 +3,33 @@ layout: default
 title: Tags
 permalink: /tags/
 ---
-<!-- Always shows a header, even in smaller screens. -->
-<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
-  <header class="mdl-layout__header">
-    <div class="mdl-layout__header-row">
-      <!-- Title -->
-      <span class="mdl-layout-title">{{ site.title }}</span>
-      <!-- Add spacer, to align navigation to the right -->
-      <div class="mdl-layout-spacer"></div>
-      <button class="mdl-button mdl-js-button mdl-button--icon">
-  <a href="#top" style="color: inherit;"><i class="material-icons">vertical_align_top</i></a>
-</button>
-    </div>
-  </header>
-  <div class="mdl-layout__drawer">
-    <span class="mdl-layout-title">Blog</span>
-    <nav class="mdl-navigation">
-      {% include drawer.html %}
-    </nav>
-  </div>
-  <main class="mdl-layout__content">
-    <div class="page-content" style="padding:32px;" align="center">
-      <section id="top"></section>
-      <div class="mdl-card mdl-shadow--2dp mdl-layout__content mdl-cell mdl-cell--12-col mdl-shadow--4dp"
-       style=" max-width:1300px; padding:16px;">
+
+  <div class="mdl-card mdl-cell mdl-cell--12-col postcard" align="start">
+    <section class="content">
        {% for tag in site.tags %}
-       <a href="#{{ tag | first }}"><button class="mdl-button mdl-js-button mdl-js-ripple-effect">#{{ tag | first }}</button></a>
+       <a href="#{{ tag | first }}">
+         <button class="mdl-button mdl-js-button mdl-js-ripple-effect">
+           # {{ tag | first }}
+         </button>
+       </a>
        {% endfor %}
+     </section>
       </div>
 
+      <div class="mdl-card mdl-cell mdl-cell--12-col postcard content" align="start">
 
       {% for tag in site.tags %}
-  <h4 id="{{ tag | first }}"> {{ tag | first }}<h4>
+  <h4 id="{{ tag | first }}"># {{ tag | first }}<h4>
   {% for posts in tag %}
     {% for post in posts %}
     {% if post.title %}
-    <div class="mdl-card mdl-shadow--2dp demo-card-image mdl-cell mdl-cell--12-col mdl-shadow--4dp"
-     style="{% if post.image %}background: linear-gradient( rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4) ), url('{{ post.image }}');{% endif %}
-     background-color: #5F7D8B; max-width:1300px;">
-      <div class="mdl-card__title mdl-card--expand"></div>
-      <div class="mdl-card__actions">
-        <span class="demo-card-image__filename" style="color:white;">
-        <h4 style="padding: 16px;"><a href="{{ post.url | prepend: site.baseurl }}" style="color:white;">{{ post.title }}</a></h4>
-        <table><tr><td><i class="material-icons">today</i></td><td>{{ post.date | date: "%Y.%m.%d" }}</td></tr></table>
-        </span>
-      </div>
-    </div>
+    <p>{{ post.date | date: "%Y.%m.%d" }} | <a href="{{ site.baseurl }}/{{ post.url }}">{{ post.title }}</a>{% if post.author %} | {{ post.author }} {% endif %}</p>
     {% endif %}
     {% endfor %}
   {% endfor %}
   {% endfor %}
 
 
-
-
-</div>
-  </main>
 </div>
 
-
-<script src="{{ "/js/material.min.js" | prepend: site.baseurl }}"></script>
-<script src="{{ "/js/common.js" | prepend: site.baseurl }}"></script>
+</div>
